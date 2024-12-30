@@ -9,9 +9,9 @@ Projeto desenvolvido como parte da disciplina de Estrutura de Dados do curso de 
 **:dart: Objetivos** 
 
 - [X]   Transformar uma lista ligada dinâmica em uma estrutura duplamente ligada;
-- [X]   Implementar a fução exibirPilhaInvertida, que exibe as chaves dos elementos da pilha, partindo da base até o topo;
-- [X]   Implementar a função encontrarMax, que encontra a maior chave dentro do DEQUE e copia essa chave para o endereço de memória passado como parâmetro;
-- [X]   Implementar a função inserirNaFila e excluirDaFila para considerando a exitência de um nó cabeça na fila.
+- []   Implementar a fução exibirPilhaInvertida, que exibe as chaves dos elementos da pilha, partindo da base até o topo;
+- []   Implementar a função encontrarMax, que encontra a maior chave dentro do DEQUE e copia essa chave para o endereço de memória passado como parâmetro;
+- []   Implementar a função inserirNaFila e excluirDaFila para considerando a exitência de um nó cabeça na fila.
 
 ---
 
