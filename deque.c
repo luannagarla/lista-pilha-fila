@@ -3,35 +3,55 @@
 #include <stdbool.h>
 #include <limits.h>
 
-typedef struct Node {
-    int key;             
-    struct Node* next;    
-    struct Node* prev;    
+typedef struct Node
+{
+    int key;
+    struct Node *next;
+    struct Node *prev;
 } Node;
 
-typedef struct DEQUE {
-    Node* head;  // Nó-cabeça do DEQUE
+typedef struct DEQUE
+{
+    Node *head;
 } DEQUE;
 
-
-bool encontrarMax(DEQUE* d, int* max) {
-    if (!d || !d->head || !d->head->next) { // Retornar false caso o DEQUE nao contenha nenhum elemento valido (apenas o nó-cabeça)
+bool encontrarMax(DEQUE *d, int *max)
+{
+    if (!d || !d->head || d->head->next == d->head)
+    {
+        // Atende ao críterio:Retornar false caso o DEQUE n ̃ao contenha nenhum elemento valido (apenas o no-cabeca).
         return false;
     }
 
-   
+    Node *current = d->head->next;
+    int maior = -9999999999;
+
+    // percorre o deque com a condicional atual != nó cabeça inicial
+    while (current != d->head)
+    {
+        if (current->key > maior) // compara que o considerado maior anteriormente
+        {
+            maior = current->key;
+        }
+        current = current->next;
+    }
+
+    *max = maior; // Critério "Copiar o valor da maior chave dos elementos validos do DEQUE para a memoria apontada por max e retornar true."
+    return true;
 }
 
-int main() {
+int main()
+{
+    // inicializção
     DEQUE deque;
     Node head;
     head.next = &head;
     head.prev = &head;
     deque.head = &head;
 
-    Node* node1 = (Node*)malloc(sizeof(Node));
-    Node* node2 = (Node*)malloc(sizeof(Node));
-    Node* node3 = (Node*)malloc(sizeof(Node));
+    Node *node1 = (Node *)malloc(sizeof(Node));
+    Node *node2 = (Node *)malloc(sizeof(Node));
+    Node *node3 = (Node *)malloc(sizeof(Node));
 
     node1->key = 10;
     node2->key = 20;
@@ -52,11 +72,12 @@ int main() {
     head.prev->next = node3;
     head.prev = node3;
 
-   
-
-    free(node1);
-    free(node2);
-    free(node3);
+    // chamada função da atividade
+    int max;
+    if (encontrarMax(&deque, &max))
+    {
+        printf("\nMaior chave: %d\n", max);
+    }
 
     return 0;
 }
