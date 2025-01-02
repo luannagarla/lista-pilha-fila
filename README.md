@@ -18,7 +18,7 @@ Projeto desenvolvido como parte da disciplina de Estrutura de Dados do curso de 
 
 **:question: Sobre o código** 
 
-*   O arquivo [lista-ligada.cpp](https://github.com/luannagarla/lista-pilha-fila/blob/main/lista-ligada.cpp) consta a implementação de uma estrutura duplamente ligada.
-*   O arquivo [pilha-estatica.cpp](https://github.com/luannagarla/lista-pilha-fila/blob/main/pilha-estatica.cpp) consta a implementação da fução exibirPilhaInvertida.
-*   O arquivo [deque.cpp](https://github.com/luannagarla/lista-pilha-fila/blob/main/deque.cpp) consta a implementação da função encontrarMax.
-*   O arquivo [fila-no-cabeca.cpp](https://github.com/luannagarla/lista-pilha-fila/blob/main/fila-no-cabeca.cpp) consta a implementação das funções inserirNaFila e excluirDaFila.
+*   O arquivo [lista-ligada.c](https://github.com/luannagarla/lista-pilha-fila/blob/main/lista-ligada.c) consta a implementação de uma estrutura duplamente ligada.
+*   O arquivo [pilha-estatica.c](https://github.com/luannagarla/lista-pilha-fila/blob/main/pilha-estatica.c) consta a implementação da fução exibirPilhaInvertida.
+*   O arquivo [deque.c](https://github.com/luannagarla/lista-pilha-fila/blob/main/deque.c) consta a implementação da função encontrarMax.
+*   O arquivo [fila-no-cabeca.c](https://github.com/luannagarla/lista-pilha-fila/blob/main/fila-no-cabeca.c) consta a implementação das funções inserirNaFila e excluirDaFila.
