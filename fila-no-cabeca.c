@@ -29,9 +29,10 @@ typedef struct
 pelo endereco em f) */
 void inicializarFila(FILA *f)
 {
-  f->inicio = NULL;
-  f->fim = NULL;
-} /* inicializarFila */
+  f->inicio = (PONT)malloc(sizeof(ELEMENTO)); // novo nó
+  f->inicio->prox = NULL;
+  f->fim = f->inicio;
+}
 
 /* Retornar o tamanho da fila (numero de elementos) */
 int tamanho(FILA *f)
@@ -89,40 +90,35 @@ PONT retornarUltimo(FILA *f, TIPOCHAVE *ch)
   return f->fim;
 } /* retornarUltimo */
 
-// trecho a modificar:
+// trechos a modificar:
 bool inserirNaFila(FILA *f, REGISTRO reg)
 {
-  /* COMPLETAR - REVISAR o c ́odigo desta fun ̧c~ao */
-  PONT novo = (PONT)malloc(sizeof(ELEMENTO));
-  novo->reg = reg;
-  novo->prox = NULL;
-  if (f->inicio == NULL)
-  {
-    f->inicio = novo;
-  }
-  else
-  {
-    f->fim->prox = novo;
-  }
-  f->fim = novo;
+  PONT novo = (PONT)malloc(sizeof(ELEMENTO)); // novo nó
+
+  novo->reg = reg; //novo nó recebe o reg do param
+  novo->prox = NULL; //recebe null pois é o último elemento da fila
+  f->fim->prox = novo; //o anterior recebe o que está senod criado, pois não é mais o último
+  f->fim = novo; //atualiza var de apoio "fim" 
+
   return true;
 }
 
 bool excluirDaFila(FILA *f, REGISTRO *reg)
 {
-  /* COMPLETAR - REVISAR o c ́odigo desta fun ̧c~ao */
-  if (f->inicio == NULL)
+  if (f->inicio->prox == NULL) //validaçao fila vazia
   {
     return false;
   }
-  *reg = f->inicio->reg;
-  PONT apagar = f->inicio;
-  f->inicio = f->inicio->prox;
-  free(apagar);
-  if (f->inicio == NULL)
+
+  PONT apagar = f->inicio->prox; //pega um elemento válido, no caso, o primeiro
+  *reg = apagar->reg; //pega valor a ser excluído
+  f->inicio->prox = apagar->prox; //nó cabeça aponta para o próximo do que será excluído 
+
+  if (f->inicio->prox == NULL)
   {
-    f->fim = NULL;
+    f->fim = f->inicio;
   }
+
   return true;
 }
 
@@ -186,3 +182,25 @@ PONT buscaSeqSent2(FILA *f, TIPOCHAVE ch)
     return pos;
   return NULL;
 } /* buscaSeqSent1 */
+
+int main()
+{
+  FILA fila;
+  inicializarFila(&fila);
+
+  REGISTRO reg1 = {1}, reg2 = {2}, reg3 = {3};
+  inserirNaFila(&fila, reg1);
+  inserirNaFila(&fila, reg2);
+  inserirNaFila(&fila, reg3);
+
+  printf("---------------FILA---------------\n");
+  exibirFila(&fila);
+
+  REGISTRO regRemovido;
+  excluirDaFila(&fila, &regRemovido);
+
+  printf("---------------FILA APOS EXCLUSAO---------------\n");
+  exibirFila(&fila);
+
+  return 0;
+}
